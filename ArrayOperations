@@ -1,0 +1,161 @@
+package DS;
+import java.util.Scanner;
+public class ArrayOperations {
+	public static void main(String[]args) {
+
+		        Scanner sc = new Scanner(System.in);
+		        int[] shelf = new int[10]; 
+		        int size = 0;              
+		        int choice;
+
+		        do {
+		        	 System.out.println("\n----- ARRAY MENU -----");
+		             System.out.println("1. Add value");
+		             System.out.println("2. Insert at index");
+		             System.out.println("3. Fill array");
+		             System.out.println("4. Delete last element");
+		             System.out.println("5. Delete by index");
+		             System.out.println("6. Display");
+		             System.out.println("7. Search value");
+		             System.out.println("8. Get value at index");
+		             System.out.println("9. Replace/Update value at index");
+		             System.out.println("10. Size");
+		             System.out.println("11. Exit");
+		             System.out.print("Enter your choice: ");
+		            choice = sc.nextInt();
+
+		            switch(choice) {
+		                case 1: 
+		                    if(size == shelf.length) {
+		                        System.out.println("Shelf Overflow! No more space.");
+		                    } else {
+		                        System.out.print("Enter Book ID to add: ");
+		                        shelf[size++] = sc.nextInt();
+		                        System.out.println("Book added successfully.");
+		                    }
+		                    break;
+		                    
+
+		                case 2: // Insert at index
+		                    if(size == shelf.length) {
+		                        System.out.println("Shelf Overflow!");
+		                    } else {
+		                        System.out.print("Enter index (0-" + size + "): ");
+		                        int idx = sc.nextInt();
+		                        if(idx < 0 || idx > size) {
+		                            System.out.println("Invalid index!");
+		                        } else {
+		                            System.out.print("Enter value: ");
+		                            int val = sc.nextInt();
+		                            for(int i = size; i > idx; i--) {
+		                                shelf[i] = shelf[i-1];
+		                            }
+		                            shelf[idx] = val;
+		                            size++;
+		                        }
+		                    }
+		                    break;
+		                    
+
+		                case 3: 
+		                    while(size < shelf.length) {
+		                        System.out.print("Enter value (or -1 to stop): ");
+		                        int val = sc.nextInt();
+		                        if(val == -1) break;
+		                        shelf[size++] = val;
+		                    }
+		                    break;
+
+		                case 4: 
+		                    if(size == 0) {
+		                        System.out.println("Shelf Underflow!");
+		                    } else {
+		                        System.out.println("Deleted: " + shelf[size-1]);
+		                        size--;
+		                    }
+		                    break;
+		                    
+		                case 5: 
+		                    if(size == 0) {
+		                        System.out.println("Shelf Underflow!");
+		                    } else {
+		                        System.out.print("Enter index (0-" + (size-1) + "): ");
+		                        int idx = sc.nextInt();
+		                        if(idx < 0 || idx >= size) {
+		                            System.out.println("Invalid index!");
+		                        } else {
+		                            System.out.println("Deleted: " + shelf[idx]);
+		                            for(int i = idx; i < size-1; i++) {
+		                                shelf[i] = shelf[i+1];
+		                            }
+		                            size--;
+		                        }
+		                    }
+		                    break;
+		                    
+		                    
+		                case 6:
+		                    if(size == 0) {
+		                        System.out.println("Shelf is empty.");
+		                    } else {
+		                        System.out.print("Shelf contents: ");
+		                        for(int i = 0; i < size; i++) {
+		                            System.out.print(shelf[i] + " ");
+		                        }
+		                        System.out.println();
+		                    }
+		                    break;
+
+		                case 7: 
+		                    System.out.print("Enter value to search: ");
+		                    int val = sc.nextInt();
+		                    boolean found = false;
+		                    for(int i = 0; i < size; i++) {
+		                        if(shelf[i] == val) {
+		                            System.out.println("Found at index " + i);
+		                            found = true;
+		                            
+		                            break;
+		                        }
+		                    }
+		                    if(!found) System.out.println("Not found.");
+		                    break;
+
+		                    
+		                case 8:
+		                    System.out.print("Enter index: ");
+		                    int idx = sc.nextInt();
+		                    if(idx < 0 || idx >= size) {
+		                        System.out.println("Invalid index!");
+		                    } else {
+		                        System.out.println("Value at index " + idx + " = " + shelf[idx]);
+		                    }
+		                    break;
+
+		                case 9: 
+		                    System.out.print("Enter index: ");
+		                    idx = sc.nextInt();
+		                    if(idx < 0 || idx >= size) {
+		                        System.out.println("Invalid index!");} 
+		                    else {
+		                            System.out.print("Enter new value: ");
+		                            shelf[idx] = sc.nextInt();
+		                            System.out.println("Updated successfully.");
+		                        }
+		                        break;
+
+		                    case 10: 
+		                        System.out.println("Current size = " + size);
+		                        break;
+
+		                    case 11: 
+		                        System.out.println("Exiting...");
+		                        break;
+
+		                    default:
+		                        System.out.println("Invalid choice!");
+		                }
+		            } while(choice != 11);
+		        }}
+	
+
