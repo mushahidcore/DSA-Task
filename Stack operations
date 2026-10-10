@@ -1,0 +1,75 @@
+package DS;
+import java.util.Scanner;
+public class StackOperations {
+	public static void main (String[]args) {
+		        Scanner sc = new Scanner(System.in);
+		        int[] stack = new int[10]; 
+		        int top = -1;              
+		        int choice;
+		        do {
+		            System.out.println("\n----- STACK MENU -----");
+		            System.out.println("1. Push");
+		            System.out.println("2. Pop");
+		            System.out.println("3. Display");
+		            System.out.println("4. Size");
+		            System.out.println("5. isEmpty");
+		            System.out.println("6. isFull");
+		            System.out.println("7. Exit");
+		            System.out.print("Enter your choice: ");
+		            choice = sc.nextInt();
+		            switch(choice) {
+		                case 1: 
+		                    if(top == stack.length - 1) {
+		                        System.out.println("Stack Overflow!");
+		                    } else {
+		                        System.out.print("Enter value to push: ");
+		                        int val = sc.nextInt();
+		                        stack[++top] = val;
+		                        System.out.println(val + " pushed onto stack.");      }
+		                    break;
+		                case 2: 
+		                    if(top == -1) {
+		                        System.out.println("Stack Underflow!");
+		                    } else {
+		                        System.out.println("Popped: " + stack[top--]); }
+		                    break;
+		                case 3: 
+		                    if(top == -1) {
+		                        System.out.println("Stack is empty.");
+		                    } else {
+		                        System.out.println("Stack contents (top to bottom):");
+		                        for(int i = top; i >= 0; i--) {
+		                            System.out.println(stack[i]);
+		                        }  }
+		                    break;
+		                case 4: 
+		                    System.out.println("Current size = " + (top + 1));
+		                    break;
+		                case 5: 
+		                    if(top == -1) {
+		                        System.out.println("Stack is empty.");
+		                    } else {
+		                        System.out.println("Stack is not empty.");     }
+		                    break;
+		                case 6: 
+		                    if(top == stack.length - 1) {
+		                        System.out.println("Stack is full.");
+		                    } else {
+		                        System.out.println("Stack is not full.");   }
+		                    break;
+		                case 7: 
+		                    System.out.println("Exiting...");
+		                    break;
+		                default:
+		                    System.out.println("Invalid choice!");
+		            }
+		        } while(choice != 7);  }}
+
+		
+		
+		
+		
+		
+		
+	
+
